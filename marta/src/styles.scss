@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
+.card-body {
+    padding: 0;
+}
+
+.table {
+    margin: 0;
+}
+
+thead {
+    th {
+        padding-bottom: 0 !important;
+    }
+}
+
+tbody {
+    th {
+        font-weight: normal;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+}
+
+.card {
+    margin-bottom: 1em;
+}

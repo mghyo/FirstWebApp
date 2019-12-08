@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Please Select What To Save</h1>
+    <form [formGroup]="saveForm">
+
+        <div class="form-group">
+            <label for="table">Table to save</label>
+            <select
+                id="table"
+                formControlName="table"
+                class="form-control load-form__select"
+                [class.error]="tableControlInvalid"
+            >
+                <ng-container *ngFor="let tableName of tableNames">
+                    <option value="false">{{ tableName }}</option>
+                </ng-container>
+            </select>
+            <div class="alert alert-danger" *ngIf="tableControlInvalid">
+                Table is required
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-secondary" (click)="exitForm()">Done</button>
+        <button type="button" class="btn btn-success" [disabled]="!saveForm.valid" (click)="saveFiles(files)">Save Table</button>
+    </form>
+</div>
+        

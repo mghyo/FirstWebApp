@@ -1,0 +1,66 @@
+<div class="simulation-container">
+    <div class="control-group date-picker">
+        <span>Date:</span>
+        <input
+            readonly
+            #dateTime
+            [disabled]="disabled$ | async"
+            [owlDateTime]="dt1"
+            [value]="dateTime$ | async"
+            (dateTimeChange)="dateChange()"
+            placeholder=" simulation date">
+        <button type="button" class="btn btn-default btn-sm trigger" [owlDateTimeTrigger]="dt1" [disabled]="disabled$ | async">
+            <i class="fas fa-calendar-alt"></i>
+        </button>
+        <owl-date-time #dt1></owl-date-time>
+    </div>
+    <div class="control-group run-options-group">
+        <span>Run In Continuous Mode:</span>
+        <input type="checkbox"
+            [disabled]="disabled$ | async"
+            [checked]="runContinuous"
+            (change)="runContinuous = !runContinuous">
+    </div>
+    <div class="control-group controls-group">
+        <input #running class="hidden-input" type="text" value="{{ running$ | async }}">
+        <span>Steps:</span>
+        <input
+            *ngIf="!((disabled$ | async) || runContinuous); else countDown"
+            [disabled]="(disabled$ | async) || runContinuous"
+            [(ngModel)]="steps"
+            type="number"
+            min="1"
+            placeholder=" steps">
+        <ng-template #countDown>
+            <input
+                [disabled]="(disabled$ | async) || runContinuous"
+                [value]="steps$ | async"
+                type="number">
+        </ng-template>
+        <button type="button"
+            [disabled]="stepping$ | async"
+            class="btn btn-default btn-sm"
+            (click)="onRunToggle(running.value)">
+            <span *ngIf="(running$ | async); else playIcon"><i class="fa fa-pause"></i></span>
+            <ng-template #playIcon>
+                <span><i class="fa fa-play"></i></span>
+            </ng-template>
+        </button>
+        <button type="button" class="btn btn-default btn-sm"
+            [disabled]="disabled$ | async"
+            (click)="onStepClick()">
+            Step
+        </button>
+    </div>
+    <div class="control-group duration-group">
+        <span>Step Duration:</span>
+        <input
+            [disabled]="disabled$ | async"
+            [(ngModel)]="stepDurationMinutes"
+            type="number"
+            min="1"
+            max="10"
+            placeholder=" duration">
+        <span>Mins</span>
+    </div>
+</div>

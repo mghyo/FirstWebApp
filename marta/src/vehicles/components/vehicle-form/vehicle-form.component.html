@@ -1,0 +1,78 @@
+<div class="vehicle-form">
+  <h1>Please Enter A New {{ getVehicleString() }}</h1>
+  <form [formGroup]="vehicleForm">
+
+    <div class="form-group">
+      <label for="routeName">{{ getVehicleString() }} route name</label>
+      <select
+        id="routeName"
+        class="form-control vehicle-form__select"
+        formControlName="vehicleRouteId"
+        [class.error]="routeControlInvalid"
+        (ngModelChange)="onRouteChange($event)"
+      >
+        <ng-container *ngFor="let route of (routes$ | async)">
+          <option [value]="route.id">{{ route.name }}</option>
+        </ng-container>
+      </select>
+      <div class="alert alert-danger" *ngIf="routeControlInvalid">
+        Must select a route
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="startingStop">Starting stop name</label>
+      <select
+        id="startingStop"
+        class="form-control vehicle-form__select"
+        formControlName="startingStopId"
+        [class.error]="startingStopControlInvalid"
+        (ngModelChange)="onStartingStopChange($event)"
+      >
+        <ng-container *ngFor="let stop of (startingStops$ | async)">
+          <option [value]="stop.id">{{ stop.name }}</option>
+        </ng-container>
+      </select>
+      <div class="alert alert-danger" *ngIf="startingStopControlInvalid">
+        Must select a stop
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="nextStop">Next stop name</label>
+      <select
+        id="nextStop"
+        class="form-control vehicle-form__select"
+        formControlName="nextStopId"
+        [class.error]="nextStopControlInvalid"
+        (ngModelChange)="onNextStopChange($event)"
+      >
+        <ng-container *ngFor="let stop of (nextStops$ | async)">
+          <option [value]="stop.id">{{ stop.name }}</option>
+        </ng-container>
+      </select>
+      <div class="alert alert-danger" *ngIf="nextStopControlInvalid">
+        Must select a stop
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="capacity">{{ getVehicleString() }} capacity</label>
+      <input
+        id="capacity"
+        class="form-control vehicle-form__input"
+        type="text"
+        formControlName="capacity"
+        placeholder="e.g. 25"
+        [class.error]="capacityControlInvalid">
+      <div class="alert alert-danger" *ngIf="capacityControlInvalid">
+        Capacity required
+      </div>
+    </div>
+
+    <div class="vehicle-form__actions">
+      <button type="button" class="btn btn-secondary" (click)="cancelForm()">Cancel</button>
+      <button type="button" class="btn btn-success" [disabled]="!enableSubmit" (click)="createVehicle()">Add {{ getVehicleString() }}</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,70 @@
+<div class="bus-stop-form">
+  <h1>Please Enter A New {{ vehicleName }} Route</h1>
+  <form [formGroup]="vehicleRouteForm">
+
+    <div class="form-group">
+      <label for="routeName">{{ vehicleName }} route name</label>
+      <input
+        id="routeName"
+        class="form-control vehicle-route-form__input"
+        type="text"
+        formControlName="name"
+        placeholder="e.g. X press route"
+        [class.error]="nameControlInvalid"
+      >
+      <div class="alert alert-danger" *ngIf="nameControlInvalid">
+        route must have name
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="routeType">Circular route</label>
+      <select
+        id="routeType"
+        class="form-control vehicle-route-form__select"
+        formControlName="isCircular"
+        [class.error]="circularControlInvalid"
+      >
+        <option value="false">NO</option>
+        <option value="true">YES</option>
+      </select>
+      <div class="alert alert-danger" *ngIf="circularControlInvalid">
+        select circular required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="stops">Stops on route</label>
+      <ss-multiselect-dropdown
+        for="stops"
+        [options]="myOptions"
+        [texts]="myTexts"
+        [settings]="mySettings"
+        [(ngModel)]="dropdownModel"
+        (ngModelChange)="updateStopList($event)"
+        [class.error]="stopControlInvalid"
+        formControlName="selectedStopsValues"
+        class="form-control vehicle-route-form__select"
+      >
+      </ss-multiselect-dropdown>
+      <div class="alert alert-danger" *ngIf="stopControlInvalid">
+        at least 2 stops required
+      </div>
+      <div class="selected-stops">
+        <span class="selected-stop__label" *ngIf="(stopList$ | async)">Ordered stops on route:</span>
+        <div class="selected-stop" *ngFor="let stopName of (stopList$ | async)">{{ stopName }}</div>
+      </div>
+    </div>
+
+    <div class="vehicle-route-form__actions">
+      <button type="button" class="btn btn-secondary" (click)="cancelForm()">Cancel</button>
+      <button type="button"
+        class="btn btn-success"
+        [disabled]="!vehicleRouteForm.valid"
+        (click)="createVehicleRoute(vehicleRouteForm)"
+      >
+        Add {{ vehicleName }} Route
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,79 @@
+<div class="rider-form">
+    <h1>Please enter a new rider</h1>
+    <form [formGroup]="riderForm">
+
+      <div class="form-group">
+        <label for="routeType">Type</label>
+        <select id="routeType"
+            class="form-control rider-form__select"
+            formControlName="routeType"
+            [class.error]="routeTypeControlInvalid"
+            (ngModelChange)="onRouteTypeChange($event)">
+            <option value="1">Bus</option>
+            <option value="2">Train</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="routeTypeControlInvalid">
+          Must select a route type
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="route">Route</label>
+        <select
+          id="route"
+          class="form-control rider-form__select"
+          formControlName="routeId"
+          [class.error]="routeControlInvalid"
+          (ngModelChange)="onRouteChange($event)"
+        >
+          <ng-container *ngFor="let route of (routes$ | async)">
+            <option [value]="route.id">{{ route.name }}</option>
+          </ng-container>
+        </select>
+        <div class="alert alert-danger" *ngIf="routeControlInvalid">
+          Must select a route
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="startingStop">Starting Stop Name</label>
+        <select id="startingStop"
+          class="form-control rider-form__select"
+          formControlName="startingStopId"
+          [class.error]="startingStopControlInvalid"
+          (ngModelChange)="onStartingStopChange($event)"
+        >
+          <ng-container *ngFor="let stop of (startingStops$ | async)">
+            <option [value]="stop.id">{{ stop.name }}</option>
+          </ng-container>
+        </select>
+        <div class="alert alert-danger" *ngIf="startingStopControlInvalid">
+          Must select a stop
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="endingStop">Ending Stop Name</label>
+        <select id="endingStop"
+          class="form-control rider-form__select"
+          formControlName="endingStopId"
+          [class.error]="endingStopControlInvalid"
+          (ngModelChange)="onEndingStopChange($event)"
+        >
+          <ng-container *ngFor="let stop of (endingStops$ | async)">
+            <option [value]="stop.id">{{ stop.name }}</option>
+          </ng-container>
+        </select>
+        <div class="alert alert-danger" *ngIf="endingStopControlInvalid">
+          Must select a stop
+        </div>
+      </div>
+
+      <div class="rider-form__actions">
+        <button type="button" class="btn btn-secondary" (click)="cancelForm()">Cancel</button>
+        <button type="button" class="btn btn-success" [disabled]="!enableSubmit" (click)="createRider()">
+          Create Rider
+        </button>
+      </div>
+    </form>
+  </div>

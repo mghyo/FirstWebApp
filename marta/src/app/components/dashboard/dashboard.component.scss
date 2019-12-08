@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+
+    app-buttons {
+        width: 30%;
+        margin: 5px;
+    }
+
+    app-tables {
+        width: 70%;
+        margin: 5px;
+    }
+}

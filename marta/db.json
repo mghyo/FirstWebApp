@@ -1,0 +1,158 @@
+{
+  "vehicle-routes": [
+    {
+      "id": 1,
+      "type": 1,
+      "name": "Route one",
+      "isCircular": true,
+      "stopIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 2,
+      "type": 2,
+      "name": "Route two",
+      "isCircular": false,
+      "stopIds": [
+        3,
+        4
+      ]
+    },
+    {
+      "id": 3,
+      "type": 1,
+      "name": "temp",
+      "isCircular": true,
+      "stopIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 4,
+      "type": 1,
+      "name": "Route 3",
+      "isCircular": true,
+      "stopIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 5,
+      "type": 1,
+      "name": "other",
+      "isCircular": false,
+      "stopIds": [
+        5,
+        2
+      ]
+    }
+  ],
+  "vehicles": [
+    {
+      "type": 1,
+      "id": 1,
+      "routeId": 1,
+      "nextStopId": 1,
+      "currentStopId": 2,
+      "atStop": false,
+      "capacity": 23,
+      "minutesTillArrival": 5,
+      "minutesTillDeparting": 0,
+      "traverseStopsUp": false
+    },
+    {
+      "type": 2,
+      "id": 2,
+      "routeId": 2,
+      "nextStopId": 2,
+      "currentStopId": 1,
+      "atStop": true,
+      "capacity": 8,
+      "minutesTillArrival": 0,
+      "minutesTillDeparting": 2,
+      "traverseStopsUp": true
+    },
+    {
+      "type": 1,
+      "id": 3,
+      "routeId": 1,
+      "nextStopId": 1,
+      "currentStopId": 2,
+      "atStop": true,
+      "capacity": "123",
+      "minutesTillArrival": 0,
+      "minutesTillDeparting": 0,
+      "traverseStopsUp": false,
+      "riderIds": []
+    },
+    {
+      "type": 2,
+      "id": 4,
+      "routeId": 2,
+      "nextStopId": 4,
+      "currentStopId": 3,
+      "atStop": true,
+      "capacity": "456",
+      "minutesTillArrival": 0,
+      "minutesTillDeparting": 0,
+      "traverseStopsUp": true,
+      "riderIds": []
+    }
+  ],
+  "stops": [
+    {
+      "type": 1,
+      "name": "Bus Stop A",
+      "xCoordinate": "102",
+      "yCoordinate": "-10",
+      "riderCapacity": "50",
+      "id": 1
+    },
+    {
+      "type": 1,
+      "name": "test a",
+      "xCoordinate": "180",
+      "yCoordinate": "-78",
+      "riderCapacity": "18",
+      "id": 2
+    },
+    {
+      "type": 2,
+      "name": "Greensboro",
+      "xCoordinate": "190",
+      "yCoordinate": "191",
+      "riderCapacity": "40",
+      "id": 3
+    },
+    {
+      "type": 2,
+      "name": "Mclean",
+      "xCoordinate": "400",
+      "yCoordinate": "-10",
+      "riderCapacity": "45",
+      "id": 4
+    },
+    {
+      "type": 1,
+      "name": "gogo",
+      "xCoordinate": "222",
+      "yCoordinate": "333",
+      "riderCapacity": "20",
+      "id": 5
+    }
+  ],
+  "riders": [
+    {
+      "id": 1,
+      "onVehicleId": null,
+      "atStopId": 1,
+      "beginningStopId": 1,
+      "endStopId": 2,
+      "routeId": 1
+    }
+  ]
+}

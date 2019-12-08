@@ -1,0 +1,49 @@
+h1 {
+  text-align: center;
+}
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+ss-multiselect-dropdown {
+  padding: 0;
+  margin: 0;
+
+  /deep/
+  > .dropdown {
+    width: 100% !important;
+
+    > button {
+      border: 0;
+      text-align: left;
+      width: 100%;
+    }
+  }
+}
+
+.selected-stops {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  margin-top: 5px;
+
+  .selected-stop {
+    width: fit-content;
+    background-color: lightgrey;
+    color: black;
+    border-radius: 5px;
+    padding: 5px;
+    margin-right: 5px;
+
+    &__label {
+      margin-right: 5px;
+      background-color: transparent;
+      color: black;
+    }
+  }
+}

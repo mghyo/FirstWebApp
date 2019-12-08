@@ -1,0 +1,72 @@
+.simulation-container {
+    display: flex;
+    flex-direction: column;
+
+    .btn {
+        border: 1px solid buttonface;
+    }
+
+    input {
+        height: 30px;
+        border: 1px solid buttonface;
+        border-radius: 3px;
+    }
+    
+    .control-group {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 5px;
+        height: 35px;
+
+        > span:first-of-type {
+            min-width: 45px;
+            margin-right: 3px;
+        }
+
+        input {
+            flex: 1 1 0;
+            min-width: 30px;
+        }
+    }
+
+    .date-picker {
+        input {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .trigger {
+            margin-left: 0;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+
+    .run-options-group {
+        justify-content: flex-start;
+
+        input {
+            max-width: 20px;
+            background-color: white;
+            cursor: pointer;
+        }
+    }
+
+    .control-group {
+        .hidden-input {
+            display: none;
+        }
+
+        button {
+            margin-left: 5px;
+        }
+    }
+
+    .duration-group {
+        input {
+            margin-right: 3px;
+        }
+    }
+}

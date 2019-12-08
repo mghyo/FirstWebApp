@@ -1,0 +1,11 @@
+<app-simulation-controls></app-simulation-controls>
+<div class="state-controls">
+  <button [disabled]="disabled$ | async" type="button" class="btn btn-primary" (click)="riderClick()">Add Rider</button>
+  <button [disabled]="disabled$ | async" type="button" class="btn btn-primary" (click)="busClick()">Add Bus</button>
+  <button [disabled]="disabled$ | async" type="button" class="btn btn-primary" (click)="trainClick()">Add Train</button>
+  <button [disabled]="disabled$ | async" type="button" class="btn btn-primary" (click)="busStopClick()">Add Bus Stop</button>
+  <button [disabled]="disabled$ | async" type="button" class="btn btn-primary" (click)="trainStopClick()">Add Train Stop</button>
+  <button [disabled]="disabled$ | async" type="button" class="btn btn-primary" (click)="busRouteClick()">Add Bus Route</button>
+  <button [disabled]="disabled$ | async" type="button" class="btn btn-primary" (click)="trainRouteClick()">Add Train Route</button>
+</div>
+<app-backup-controls [disableButtons]="disabled$ | async"></app-backup-controls>
