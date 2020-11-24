@@ -1,5 +1,4 @@
 # Public transit simulator
-This is the first Web app I wrote in school.
 
 ## Backend
 The backend service is used to make a request to the google api
